@@ -1,5 +1,6 @@
 import { ProxyState } from "../AppState.js";
 import { Questions } from "../Models/Question.js";
+import { Pop } from "../Utils/Pop.js";
 
 export class TriviaService {
   async getQuestion() {
@@ -13,12 +14,17 @@ export class TriviaService {
     ProxyState.questions = question;
   }
 
-  guess(guess) {
+  guess(guess,id) {
     console.log("this is the guess from the service", guess);
-    if (ProxyState.questions.find((q) => q.correct_answer == guess)) {
-      alert("right");
+   let currentQuestion = ProxyState.questions.find(q => q.id == id)
+
+   
+   console.log(currentQuestion);
+  if(currentQuestion.correct_answer == guess) {
+      Pop.toast('Correct')
+      
     } else {
-      alert("wrong");
+     Pop.toast('Wrong')
     }
   }
 }

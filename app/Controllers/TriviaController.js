@@ -24,8 +24,8 @@ export class TriviaController {
     }
   }
 
-  guess(guess) {
+  guess(guess,id) {
     console.log("hello from guess", guess);
-    triviaService.guess(guess);
+    triviaService.guess(guess,id);
   }
 }
